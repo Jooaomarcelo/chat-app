@@ -1,3 +1,4 @@
+import 'package:chat_app/pages/loading_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,34 +13,23 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSwatch().copyWith(
+          primary: Colors.blue[700],
+          secondary: Colors.deepOrange,
+        ),
         useMaterial3: true,
+        appBarTheme: ThemeData.light().appBarTheme.copyWith(
+              backgroundColor: Colors.blue[900],
+              foregroundColor: Colors.white,
+              centerTitle: true,
+            ),
+        textTheme: const TextTheme(
+          headlineMedium: TextStyle(
+            color: Colors.white,
+          ),
+        ),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Text('Chat App'),
-      ),
+      home: const LoadingPage(),
     );
   }
 }
