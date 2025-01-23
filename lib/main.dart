@@ -1,4 +1,4 @@
-import 'package:chat_app/pages/loading_page.dart';
+import 'package:chat_app/pages/auth_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSwatch().copyWith(
-          primary: Colors.blue[700],
+          primary: Colors.blueAccent,
           secondary: Colors.deepOrange,
         ),
         useMaterial3: true,
@@ -24,12 +24,12 @@ class MyApp extends StatelessWidget {
               centerTitle: true,
             ),
         textTheme: const TextTheme(
-          headlineMedium: TextStyle(
+          titleMedium: TextStyle(
             color: Colors.white,
           ),
         ),
       ),
-      home: const LoadingPage(),
+      home: const AuthPage(),
     );
   }
 }
