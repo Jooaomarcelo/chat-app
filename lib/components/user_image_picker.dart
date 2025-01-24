@@ -39,7 +39,7 @@ class _UserImagePickerState extends State<UserImagePicker> {
             toolbarColor: Colors.deepOrange,
             toolbarWidgetColor: Colors.white,
             initAspectRatio: CropAspectRatioPreset.square,
-            lockAspectRatio: true,
+            lockAspectRatio: false,
             aspectRatioPresets: [
               CropAspectRatioPreset.original,
               CropAspectRatioPreset.square,
@@ -48,6 +48,7 @@ class _UserImagePickerState extends State<UserImagePicker> {
           ),
           IOSUiSettings(
             title: 'Editar imagem',
+            aspectRatioLockEnabled: false,
             aspectRatioPresets: [
               CropAspectRatioPreset.original,
               CropAspectRatioPreset.square,
