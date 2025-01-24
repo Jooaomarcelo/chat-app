@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 
 class UserImagePicker extends StatefulWidget {
@@ -28,11 +29,41 @@ class _UserImagePickerState extends State<UserImagePicker> {
     );
 
     if (pickedImage != null) {
-      setState(() {
-        _image = File(pickedImage.path);
-      });
+      final cropper = ImageCropper();
+      final croppedImage = await cropper.cropImage(
+        sourcePath: pickedImage.path,
+        maxWidth: 150,
+        uiSettings: [
+          AndroidUiSettings(
+            toolbarTitle: 'Editar imagem',
+            toolbarColor: Colors.deepOrange,
+            toolbarWidgetColor: Colors.white,
+            initAspectRatio: CropAspectRatioPreset.square,
+            lockAspectRatio: true,
+            aspectRatioPresets: [
+              CropAspectRatioPreset.original,
+              CropAspectRatioPreset.square,
+              CropAspectRatioPreset.ratio4x3,
+            ],
+          ),
+          IOSUiSettings(
+            title: 'Editar imagem',
+            aspectRatioPresets: [
+              CropAspectRatioPreset.original,
+              CropAspectRatioPreset.square,
+              CropAspectRatioPreset.ratio4x3,
+            ],
+          ),
+        ],
+      );
 
-      widget.onImagePick(_image!);
+      if (croppedImage != null) {
+        setState(() {
+          _image = File(croppedImage.path);
+        });
+
+        widget.onImagePick(_image!);
+      }
     }
   }
 
