@@ -1,6 +1,6 @@
-import 'package:chat_app/core/services/notification/chat_notification_service.dart';
-import 'package:chat_app/pages/auth_or_app.dart';
 import 'package:flutter/material.dart';
+import 'package:chat_app/core/services/notification/chat_notification_service.dart';
+import 'package:chat_app/pages/auth_or_app_page.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
-        home: const AuthOrApp(),
+        home: const AuthOrAppPage(),
       ),
     );
   }
